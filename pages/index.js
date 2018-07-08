@@ -37,11 +37,8 @@ export default class Index extends React.Component {
   async geoLocationSuccess ({ coords = false }) {
     if (!coords) return
     const { latitude, longitude } = coords
-    console.log(`Found location ${latitude}, ${longitude}`)
-    this.setState({ state: 'Getting places...' })
     try {
       const cell = `${latitude.toFixed(3)}x${longitude.toFixed(3)}`
-      console.log(cell)
       this.setState({ latitude, longitude, cell: cell, state: false })
       gun.get('hugmyndir').get(cell).open(data => {
         this.setState({ideas: data})
@@ -56,8 +53,6 @@ export default class Index extends React.Component {
 
   getLocation () {
     if (navigator && navigator.geolocation) {
-      console.log('Update location')
-      this.setState({ state: 'Finding location...' })
       navigator.geolocation.getCurrentPosition(this.geoLocationSuccess, this.geoLocationError, { enableHighAccuracy: true, timeout: 5000 })
     }
   }
@@ -67,7 +62,7 @@ export default class Index extends React.Component {
       <Layout>
         <div>
           <h1>Hugmyndir</h1>
-          <textarea name='idea' id='ideatext' cols='50' rows='10' />
+          <textarea name='idea' id='ideatext' placeholder='Share your idea with the world..' rows='5' autoFocus />
           <div>
             <button onClick={this.addIdea}>Share</button>
           </div>
@@ -92,6 +87,13 @@ export default class Index extends React.Component {
               outline:0;
             }
             button:active {
+              outline: 0;
+            }
+            textarea {
+              font-size: 2em;
+              width: 90%;
+            }
+            textarea:active {
               outline: 0;
             }
           `}
