@@ -1,0 +1,62 @@
+{
+  "name": "hugmyndir",
+  "version": "1.0.0",
+  "description": "Share and discover ideas in the world",
+  "author": {
+    "name": "Geir Gåsodden",
+    "email": "geir.gasodden@pythonia.no",
+    "url": "https://github.com/zrrrzzt"
+  },
+  "contributors": [
+    {
+      "name": "Jonas Maccyber Enge",
+      "email": "jonas.enge@gmail.com",
+      "url": "https://github.com/maccyber"
+    }
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alheimsins/hugmyndir.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alheimsins/hugmyndir/issues"
+  },
+  "homepage": "https://github.com/Alheimsins/hugmyndir#readme",
+  "engines": {
+    "node": ">=10.6.0"
+  },
+  "scripts": {
+    "test": "standard && npm audit && ava",
+    "test-offline": "standard && ava",
+    "coverage": "nyc ava",
+    "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
+    "standard-fix": "standard --fix",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
+    "cleanup": "rm -rf .next && rm -rf out",
+    "deploy": "npm run export && now --static out && now alias"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "gun": "0.9.9993",
+    "next": "6.1.1",
+    "react": "16.4.1",
+    "react-dom": "16.4.1"
+  },
+  "now": {
+    "name": "hugmyndir",
+    "alias": "hugmyndir.alheimsins.net",
+    "type": "static"
+  },
+  "devDependencies": {
+    "ava": "0.25.0",
+    "coveralls": "3.0.2",
+    "nyc": "12.0.2",
+    "standard": "11.0.1"
+  }
+}
