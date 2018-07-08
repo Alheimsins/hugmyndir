@@ -66,6 +66,9 @@ export default class Index extends React.Component {
           <div>
             <button onClick={this.addIdea}>Share</button>
           </div>
+          <div className='cellGrid'>
+            Ideagrid {this.state.cell}
+          </div>
           { this.state.ideas ? <Ideas ideas={this.state.ideas} /> : false }
         </div>
         <style jsx>
@@ -95,6 +98,9 @@ export default class Index extends React.Component {
             }
             textarea:active {
               outline: 0;
+            }
+            .cellGrid {
+              color: #cecece;
             }
           `}
         </style>
