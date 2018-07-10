@@ -3,6 +3,7 @@ import Gun from 'gun/gun'
 import 'gun/lib/open'
 import Layout from '../components/Layout'
 import Ideas from '../components/Ideas'
+const sloppyRound = require('../lib/sloppy-round')
 const gun = Gun('https://gundb.alheimsins.net/gun')
 
 export default class Index extends React.Component {
@@ -38,7 +39,7 @@ export default class Index extends React.Component {
     if (!coords) return
     const { latitude, longitude } = coords
     try {
-      const cell = `${latitude.toFixed(3)}x${longitude.toFixed(3)}`
+      const cell = `${sloppyRound(latitude)}x${sloppyRound(longitude)}`
       this.setState({ latitude, longitude, cell: cell, state: false })
       gun.get('hugmyndir').get(cell).open(data => {
         this.setState({ideas: data})
