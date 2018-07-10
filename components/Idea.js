@@ -5,7 +5,7 @@ export default ({ idea }) => (
       {`
         .wrapper {
           align-self: center;
-          width: 90%;
+          width: 80%;
           text-align: left;
           padding: 10px;
           border-radius: 0;

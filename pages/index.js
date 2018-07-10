@@ -95,7 +95,7 @@ export default class Index extends React.Component {
             }
             textarea {
               font-size: 2em;
-              width: 90%;
+              width: 80%;
               border: none;
             }
             textarea:active, textarea:focus {
