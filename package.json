@@ -40,7 +40,12 @@
     "cleanup": "rm -rf .next && rm -rf out",
     "deploy": "npm run export && now --static out --name hugmyndir && now alias"
   },
-  "keywords": [],
+  "keywords": [
+    "gun",
+    "fun",
+    "ideas",
+    "useless"
+  ],
   "license": "MIT",
   "dependencies": {
     "gun": "0.9.9993",

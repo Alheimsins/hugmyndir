@@ -75,7 +75,7 @@ export default class Index extends React.Component {
           {`
             button {
               background-color: white;
-              border-radius: 2px;
+              border-radius: 1px;
               color: black;
               padding: 15px 32px;
               text-align: center;
@@ -85,6 +85,7 @@ export default class Index extends React.Component {
               width: 150px;
               margin: 10px;
               cursor: pointer;
+              box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
             }
             button:focus {
               outline:0;
@@ -95,8 +96,9 @@ export default class Index extends React.Component {
             textarea {
               font-size: 2em;
               width: 90%;
+              border: none;
             }
-            textarea:active {
+            textarea:active, textarea:focus {
               outline: 0;
             }
             .cellGrid {

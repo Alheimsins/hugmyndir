@@ -4,6 +4,8 @@ export default ({ idea }) => (
     <style jsx>
       {`
         .wrapper {
+          align-self: center;
+          width: 90%;
           text-align: left;
           padding: 10px;
           border-radius: 0;
