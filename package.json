@@ -48,7 +48,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "gun": "0.9.9993",
+    "gun": "0.9.9994",
     "next": "6.1.1",
     "react": "16.4.1",
     "react-dom": "16.4.1"
