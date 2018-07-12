@@ -63,7 +63,7 @@ export default class Index extends React.Component {
       <Layout>
         <div>
           <h1>Hugmyndir</h1>
-          <textarea name='idea' id='ideatext' placeholder='Share your idea with the world..' rows='5' autoFocus />
+          <textarea name='idea' id='ideatext' placeholder='Share your idea with the world...' rows='5' autoFocus />
           <div>
             <button onClick={this.addIdea}>Share</button>
           </div>
@@ -95,6 +95,7 @@ export default class Index extends React.Component {
               outline: 0;
             }
             textarea {
+              text-align: center;
               font-size: 2em;
               width: 80%;
               border: none;
