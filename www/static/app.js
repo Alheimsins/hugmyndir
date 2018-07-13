@@ -5,6 +5,7 @@ let cell = '49.465x08.987'
 
 function init () {
   addListener(document.getElementById('ideaForm'), 'submit', addIdea)
+  showGrid()
   getLocation()
 }
 
@@ -43,7 +44,7 @@ async function geoLocationSuccess ({ coords = false }) {
 
 function getLocation () {
   if (navigator && navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, { enableHighAccuracy: true, timeout: 10000 })
+    navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, { enableHighAccuracy: true })
   } else {
     gun.get('hugmyndir').get(cell).open(data => {
       showIdeas(data)
@@ -56,6 +57,7 @@ function addIdea (e) {
   const field = document.getElementById('ideatext')
   gun.get('hugmyndir').get(cell).set(field.value)
   field.value = ''
+  field.focus()
 }
 
 function createDiv (data) {
@@ -71,8 +73,8 @@ function showIdea (wrapper, idea) {
 }
 
 function showGrid () {
-  const cell = document.getElementById('cellGrid')
-  cell.innerHTML = `Ideagrid ${cell}`
+  const grid = document.getElementById('cellGrid')
+  grid.innerHTML = `Ideagrid ${cell}`
 }
 
 function showIdeas (ideas) {
