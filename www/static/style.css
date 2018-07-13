@@ -55,6 +55,7 @@ textarea:active, textarea:focus {
 
 #ideasWrapper {
   margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;

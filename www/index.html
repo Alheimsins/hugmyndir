@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/static/style.css">
     <title>
       Hugmydir
     </title>
@@ -18,8 +17,69 @@
     </form>
     <div id="cellGrid"></div>
     <div id="ideasWrapper"></div>
+    <style>
+      body {
+        background-color: white;
+        color: black;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      button {
+        background-color: white;
+        border-radius: 1px;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 150px;
+        margin: 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
+      }
+      button:focus, button:active {
+        outline:0;
+      }
+      textarea {
+        text-align: center;
+        font-size: 2em;
+        width: 80%;
+        border: none;
+      }
+
+      textarea:active, textarea:focus {
+        outline: 0;
+      }
+
+      .wrapper {
+        align-self: center;
+        width: 80%;
+        text-align: left;
+        padding: 10px;
+        border-radius: 0;
+        background-color: #FFF;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
+        margin-top: 10px;
+      }
+
+      #ideasWrapper {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      #cellGrid {
+        color: #cecece;
+      }
+    </style>
     <script src="https://gundb.alheimsins.net/gun.js"></script>
     <script src="https://gundb.alheimsins.net/gun/lib/open.js"></script>
-    <script src="/static/app.js"></script>
+    <script src="/static/app.js" async defer></script>
   </body>
 </html>

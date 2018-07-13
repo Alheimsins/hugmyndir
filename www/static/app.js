@@ -44,7 +44,7 @@ async function geoLocationSuccess ({ coords = false }) {
 
 function getLocation () {
   if (navigator && navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, { enableHighAccuracy: true })
+    navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, { timeout: 5000 })
   } else {
     gun.get('hugmyndir').get(cell).open(data => {
       showIdeas(data)
