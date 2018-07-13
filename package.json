@@ -26,19 +26,20 @@
   "engines": {
     "node": ">=10.6.0"
   },
+  "standard": {
+    "ignore": [
+      "www"
+    ]
+  },
   "scripts": {
     "test": "standard && npm audit && ava",
     "test-offline": "standard && ava",
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "export": "next build && next export",
+    "dev": "serve",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "cleanup": "rm -rf .next && rm -rf out",
-    "deploy": "npm run export && now --static out --name hugmyndir && now alias"
+    "deploy": "now --static www --name hugmyndir && now alias"
   },
   "keywords": [
     "gun",
@@ -47,12 +48,6 @@
     "useless"
   ],
   "license": "MIT",
-  "dependencies": {
-    "gun": "0.9.9994",
-    "next": "6.1.1",
-    "react": "16.4.1",
-    "react-dom": "16.4.1"
-  },
   "now": {
     "name": "hugmyndir",
     "alias": "hugmyndir.alheimsins.net",
@@ -62,6 +57,7 @@
     "ava": "0.25.0",
     "coveralls": "3.0.2",
     "nyc": "12.0.2",
+    "serve": "9.2.0",
     "standard": "11.0.1"
   }
 }

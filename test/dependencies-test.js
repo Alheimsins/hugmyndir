@@ -1,6 +1,6 @@
 const test = require('ava')
-const { dependencies, devDependencies } = require('../package.json')
-const dropModules = ['nsp', 'react-icons']
+const { devDependencies } = require('../package.json')
+const dropModules = ['serve']
 const isDropped = module => !dropModules.includes(module)
 
 test('basic check', t => {
@@ -8,13 +8,6 @@ test('basic check', t => {
 })
 
 Object.keys(devDependencies).filter(isDropped).forEach(dependency => {
-  test(`${dependency} loads ok`, t => {
-    const module = require(dependency)
-    t.truthy(module)
-  })
-})
-
-Object.keys(dependencies).filter(isDropped).forEach(dependency => {
   test(`${dependency} loads ok`, t => {
     const module = require(dependency)
     t.truthy(module)
