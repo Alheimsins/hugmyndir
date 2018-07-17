@@ -68,5 +68,8 @@ typings/
 .next
 out
 
+# Build
+dist
+
 # Lock
 package-lock.json

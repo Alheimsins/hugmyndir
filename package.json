@@ -2,6 +2,7 @@
   "name": "hugmyndir",
   "version": "1.0.0",
   "description": "Share and discover ideas in the world",
+  "private": true,
   "author": {
     "name": "Geir Gåsodden",
     "email": "geir.gasodden@pythonia.no",
@@ -26,25 +27,26 @@
   "engines": {
     "node": ">=10.6.0"
   },
-  "standard": {
-    "ignore": [
-      "www"
-    ]
-  },
   "scripts": {
-    "test": "standard && npm audit && ava",
+    "build": "bankai build index.js",
+    "create": "choo-scaffold",
+    "inspect": "bankai inspect index.js",
+    "start": "bankai start index.js",
+    "test": "standard && npm run test-deps && npm audit && ava",
+    "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons",
+    "cleanup": "rm -rf dist",
+    "deploy": "now --static dist --name hugmyndir && now alias",
     "test-offline": "standard && ava",
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
-    "dev": "serve",
-    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "deploy": "now --static www --name hugmyndir && now alias"
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
   },
   "keywords": [
     "gun",
     "fun",
     "ideas",
+    "choo",
     "useless"
   ],
   "license": "MIT",
@@ -53,11 +55,21 @@
     "alias": "hugmyndir.alheimsins.net",
     "type": "static"
   },
+  "dependencies": {
+    "choo": "6.13.0",
+    "choo-service-worker": "2.4.0",
+    "gun": "0.9.9994",
+    "sheetify": "7.3.3",
+    "tachyons": "4.10.0"
+  },
   "devDependencies": {
     "ava": "0.25.0",
+    "bankai": "9.14.0",
+    "choo-devtools": "2.5.1",
+    "choo-scaffold": "1.2.0",
     "coveralls": "3.0.2",
+    "dependency-check": "3.2.0",
     "nyc": "12.0.2",
-    "serve": "9.2.0",
     "standard": "11.0.1"
   }
 }
