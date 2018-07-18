@@ -50,11 +50,6 @@
     "useless"
   ],
   "license": "MIT",
-  "now": {
-    "name": "hugmyndir",
-    "alias": "hugmyndir.alheimsins.net",
-    "type": "static"
-  },
   "dependencies": {
     "choo": "6.13.0",
     "choo-service-worker": "2.4.0",
