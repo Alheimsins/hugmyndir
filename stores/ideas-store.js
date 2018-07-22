@@ -13,13 +13,18 @@ module.exports = (state, emitter) => {
       gun.get('hugmyndir').get(state.cell).set(idea)
     })
 
+    emitter.on('ideas:update', ideas => {
+      state.ideas = ideas
+      emitter.emit(state.events.RENDER)
+    })
+
     emitter.on('cell:update', cell => {
       if (state.cell !== cell) {
         state.cell = cell
         gun.get('hugmyndir').get(cell).open(data => {
-          state.ideas = data
-          emitter.emit(state.events.RENDER)
+          emitter.emit('ideas:update', data)
         })
+        emitter.emit(state.events.RENDER)
       }
     })
   })
