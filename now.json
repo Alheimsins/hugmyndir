@@ -13,7 +13,7 @@
                 },
                 {
                     "key": "Content-Security-Policy",
-                    "value": "default-src 'self' *.alheimsins.net https:;"
+                    "value": "default-src 'self' 'unsafe-inline' wss://gundb.alheimsins.net;"
                 },
                 {
                     "key": "X-XSS-Protection",
@@ -21,7 +21,7 @@
                 },
                 {
                     "key": "Feature-Policy",
-                    "value": "geolocation 'self'; notifications 'self'; push 'self'; microphone 'self'; camera 'self'"
+                    "value": "geolocation 'self'; microphone 'self'; camera 'self'"
                 }
             ]
         }, {

@@ -35,7 +35,7 @@
     "test": "standard && npm run test-deps && npm audit && ava",
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons",
     "cleanup": "rm -rf dist",
-    "deploy": "now --static dist --name hugmyndir && now alias",
+    "deploy": "cp now.json dist/now.json && now dist --name hugmyndir && now alias",
     "test-offline": "standard && ava",
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
