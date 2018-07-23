@@ -40,6 +40,15 @@
                     "value": "SAMEORIGIN"
                 }
             ]
+        },
+        {
+            "source" : "**/*.@(css|js)",
+            "headers" : [
+                {
+                    "key" : "Cache-Control",
+                    "value" : "max-age=86400"
+                }
+            ]
         }
     ]
   }

@@ -18,8 +18,9 @@ function view (state, emit) {
           <textarea id="idea" name="idea" rows="3" class="w-100 h-3 f-subheadline bn tc" placeholder="Share your idea..."></textarea>
           <button type="submit" class="shadow-3 pa3 mb3 mt3 bg-white w-50 pointer">Share</button>
         </form>
-        ${grid(state.cell)}
         ${ideas(state.ideas)}
+        <hr>
+        ${grid(state.cell)}
       </main>
       ${focusInput()}
     </body>
