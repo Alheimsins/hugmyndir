@@ -13,7 +13,7 @@
                 },
                 {
                     "key": "Content-Security-Policy",
-                    "value": "default-src 'self' wss://gundb.alheimsins.net; script-src 'self' 'sha512-MDAzMERGQUMxNzMyRTU5RkUzMEEwMjZDOUYxQ0ZCRTVBNzMyRjgyQjZBQjk4NzRCQkEzRkE3QkJDOUMyNjk1NjZEQkRGRjQ3MjM2NEQ1RDNDMjhBMUY3NjZDNEIwNjJCOTI2N0YzMTI4OUIyNzNBREJBNEZDNEU1NzVEQTcyODk='; form-action 'self'"
+                    "value": "default-src 'none'; connect-src 'self' wss://gundb.alheimsins.net; script-src 'self' 'unsafe-inline'; style-src 'self' 'sha256-eEDgpGFKOeqn/zJMixAu0xxZYxJsbLjORBgWQhIh/KQ='; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
                 },
                 {
                     "key": "X-XSS-Protection",
