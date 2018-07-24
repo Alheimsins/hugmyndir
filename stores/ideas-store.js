@@ -2,7 +2,7 @@ const Gun = require('gun/gun')
 require('gun/lib/open.js')
 
 module.exports = (state, emitter) => {
-  state.ideas = {}
+  state.ideas = []
   state.cell = 'alheimsins'
 
   emitter.on('DOMContentLoaded', function () {
@@ -13,15 +13,22 @@ module.exports = (state, emitter) => {
       gun.get('hugmyndir').get(state.cell).set(idea)
     })
 
+    emitter.on('ideas:listen', cell => {
+      gun.get('hugmyndir').get(cell).open(data => {
+        emitter.emit('ideas:update', data)
+      })
+    })
+
+    emitter.on('ideas:update', data => {
+      state.ideas = Object.values(data).filter(idea => idea)
+      emitter.emit(state.events.RENDER)
+    })
+
     emitter.on('cell:update', cell => {
       if (state.cell !== cell) {
         state.cell = cell
-        state.ideas = {}
-        emitter.emit(state.events.RENDER)
-        gun.get('hugmyndir').get(cell).open(data => {
-          state.ideas = data
-          emitter.emit(state.events.RENDER)
-        })
+        emitter.emit('ideas:update', {})
+        emitter.emit('ideas:listen', cell)
       }
     })
   })
