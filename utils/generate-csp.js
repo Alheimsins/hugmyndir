@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const builder = require('content-security-policy-builder')
 const styleHash = crypto.createHash('sha256')
 const scriptHash = crypto.createHash('sha256')
-const bundleSha = `'sha512-8ek0F/85LkV7NIb9/3w5Nv2T9Qp6JYuZOD9ze5IrEWKS3mcfpFQzLAhh5Jftf/HP+2GQRH0YEdu6qRRGaIRZqg=='`
+const bundleSha = `'sha512-W9v//pH1ri99xpxFqM1rO2Wp3KnXj36iUE7RKu4BSA0Y0u0lMF6xqX1yfkbnxc/O1kEI4/ZSWmMDqPl6X2pSSw=='`
 
 let config = {
   directives: {
@@ -11,6 +11,7 @@ let config = {
     scriptSrc: [`'strict-dynamic'`],
     styleSrc: [`'self'`],
     formAction: [`'self'`],
+    objectSrc: [`'self'`],
     frameAncestors: [`'self'`],
     baseUri: [`'self'`]
   }
