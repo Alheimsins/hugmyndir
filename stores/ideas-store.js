@@ -1,13 +1,19 @@
+const sloppyRound = require('../lib/sloppy-round')
 const Gun = require('gun/gun')
 require('gun/lib/open.js')
 
 module.exports = (state, emitter) => {
   state.ideas = []
-  state.cell = 'alheimsins'
+  state.cell = false
+  state.message = ''
 
   emitter.on('DOMContentLoaded', function () {
     const gun = Gun('https://gundb.alheimsins.net/gun')
-    emitter.emit('locate')
+
+    emitter.on('message:update', message => {
+      state.message = message
+      emitter.emit(state.events.RENDER)
+    })
 
     emitter.on('ideas:add', idea => {
       gun.get('hugmyndir').get(state.cell).set(idea)
@@ -30,6 +36,38 @@ module.exports = (state, emitter) => {
         emitter.emit('ideas:update', {})
         emitter.emit('ideas:listen', cell)
       }
+    })
+
+    const geoOptions = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    }
+
+    function geoLocationSuccess ({ coords = false }) {
+      const { latitude, longitude } = coords
+      const cell = `${sloppyRound(latitude)}x${sloppyRound(longitude)}`
+      if (state.cell !== cell) {
+        emitter.emit('cell:update', cell)
+      }
+    }
+
+    function geoLocationError (error) {
+      console.error(error)
+      if (error.code === 1) {
+        emitter.emit('message:update', 'You cannot enter the grid without sharing your location')
+      }
+    }
+
+    function getLocation () {
+      if (navigator && navigator.geolocation) {
+        navigator.geolocation.watchPosition(geoLocationSuccess, geoLocationError, geoOptions)
+      }
+    }
+
+    emitter.on('locate', () => {
+      emitter.emit('message:update', '')
+      getLocation()
     })
   })
 }

@@ -9,7 +9,8 @@ module.exports = view
 function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
-  return html`
+  if (state.cell !== false) {
+    return html`
     <body>
       <main class="pa3 tc f3">
         <h1>Hugmyndir</h1>
@@ -25,6 +26,19 @@ function view (state, emit) {
       ${focusInput()}
     </body>
   `
+  } else {
+    return html`
+    <body>
+      <main class="pa3 tc f3">
+        <h1>Hugmyndir</h1>
+        <p>To share your ideas you must enter the grid to connect your mind to the physical world</p>
+        <div class="red">${state.message}</p>
+        <button class="shadow-3 pa3 mb3 mt3 bg-white w-50 pointer" onclick=${() => emit('locate')}>Enter</button>
+      </main>
+    </body>
+  `
+  }
+
   function handleSubmit (e) {
     e.preventDefault()
     const ideaField = document.getElementById('idea')

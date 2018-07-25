@@ -11,7 +11,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(require('./stores/ideas-store'))
-app.use(require('./lib/geolocation'))
 
 app.route('/', require('./views/main'))
 app.route('/*', require('./views/404'))
