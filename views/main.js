@@ -16,14 +16,13 @@ function view (state, emit) {
         <h1>Hugmyndir</h1>
         <form class="black" onsubmit=${handleSubmit}>
           <label for="idea" class="white">Share your idea...</label>
-          <textarea id="idea" name="idea" rows="3" class="w-100 h-3 f-subheadline bn tc" placeholder="Share your idea..."></textarea>
+          <textarea id="idea" name="idea" rows="3" class="w-100 h-3 f-subheadline bn tc" placeholder="Share your idea..." autofocus></textarea>
           <button type="submit" class="shadow-3 pa3 mb3 mt3 bg-white w-50 pointer">Share</button>
         </form>
         ${ideas(state.ideas)}
         <hr>
         ${grid(state.cell)}
       </main>
-      ${focusInput()}
     </body>
   `
   } else {
@@ -33,7 +32,7 @@ function view (state, emit) {
         <h1>Hugmyndir</h1>
         <p>To share your ideas you must enter the grid to connect your mind to the physical world</p>
         <div class="red">${state.message}</p>
-        <button class="shadow-3 pa3 mb3 mt3 bg-white w-50 pointer" onclick=${() => emit('locate')}>Enter</button>
+        <button class="shadow-3 pa3 mb3 mt3 bg-white w-50 pointer" onclick=${handleLocate}>Enter</button>
       </main>
     </body>
   `
@@ -47,9 +46,8 @@ function view (state, emit) {
     ideaField.value = ''
   }
 
-  function focusInput () {
-    if (typeof window !== 'undefined') {
-      document.getElementById('idea').focus()
-    }
+  function handleLocate () {
+    emit('message:update', 'Entering grid... please wait')
+    emit('locate')
   }
 }
