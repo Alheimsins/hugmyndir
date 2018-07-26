@@ -47,7 +47,7 @@ function view (state, emit) {
   }
 
   function handleLocate () {
-    emit('message:update', 'Entering grid... please wait')
     emit('locate')
+    emit('message:update', 'Entering grid... please wait')
   }
 }

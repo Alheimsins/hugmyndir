@@ -4,12 +4,13 @@ const Gun = require('gun/gun')
 require('gun/lib/open.js')
 
 module.exports = (state, emitter) => {
-  state.ideas = []
-  state.cell = false
+  state.ideas = !state.ideas ? [] : state.ideas
+  state.cell = !state.cell ? false : state.cell
   state.message = ''
 
   emitter.on('DOMContentLoaded', function () {
     const gun = Gun('https://gundb.alheimsins.net/gun')
+    console.log(`cell: ${state.cell}`)
 
     emitter.on('message:update', message => {
       state.message = message
