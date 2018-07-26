@@ -10,7 +10,6 @@ module.exports = (state, emitter) => {
 
   emitter.on('DOMContentLoaded', function () {
     const gun = Gun('https://gundb.alheimsins.net/gun')
-    console.log(`cell: ${state.cell}`)
 
     emitter.on('message:update', message => {
       state.message = message
