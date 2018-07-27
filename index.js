@@ -7,7 +7,11 @@ css('tachyons')
 const app = choo()
 
 const persistOptions = {
-  name: 'hugmyndir-state'
+  name: 'hugmyndir-state',
+  filter: state => {
+    const filtered = Object.assign({}, {ideas: state.ideas, cell: state.cell, message: state.message})
+    return filtered
+  }
 }
 
 app.use(persist(persistOptions))

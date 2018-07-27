@@ -17,6 +17,8 @@ module.exports = (state, emitter) => {
     })
 
     emitter.on('ideas:add', idea => {
+      state.ideas.push(idea)
+      emitter.emit(state.events.RENDER)
       gun.get('hugmyndir').get(state.cell).set(idea)
     })
 
@@ -27,8 +29,11 @@ module.exports = (state, emitter) => {
     })
 
     emitter.on('ideas:update', data => {
-      state.ideas = Object.values(data).filter(idea => idea)
-      emitter.emit(state.events.RENDER)
+      const ideas = Object.values(data).filter(idea => idea)
+      if (ideas.toString() !== state.ideas.toString()) {
+        state.ideas = ideas
+        emitter.emit(state.events.RENDER)
+      }
     })
 
     emitter.on('cell:update', cell => {
