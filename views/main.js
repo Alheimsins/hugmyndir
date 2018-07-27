@@ -11,7 +11,7 @@ function view (state, emit) {
 
   if (state.cell !== false) {
     return html`
-    <body>
+    <body class="sans-serif">
       <main class="pa3 tc f3">
         <h1>Hugmyndir</h1>
         <form class="black" onsubmit=${handleSubmit}>
@@ -27,12 +27,12 @@ function view (state, emit) {
   `
   } else {
     return html`
-    <body>
+    <body class="sans-serif">
       <main class="pa3 tc f3">
         <h1>Hugmyndir</h1>
         <p>To share your ideas you must enter the grid to connect your mind to the physical world</p>
         <div class="red">${state.message}</p>
-        <button class="shadow-3 pa3 mb3 mt3 bg-white w-50 pointer" onclick=${handleLocate}>Enter</button>
+        <button class="bg-white shadow-3 pa3 mb3 mt3 w-50 pointer opacity:0" onclick=${handleLocate}>Enter</button>
       </main>
     </body>
   `
