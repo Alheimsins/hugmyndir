@@ -4,12 +4,16 @@ const Gun = require('gun/gun')
 require('gun/lib/open.js')
 
 module.exports = (state, emitter) => {
-  state.ideas = !state.ideas ? [] : state.ideas
-  state.cell = !state.cell ? false : state.cell
+  state.ideas = !window.localStorage.getItem('hugmyndir-ideas') ? [] : JSON.parse(window.localStorage.getItem('hugmyndir-ideas'))
+  state.cell = !window.localStorage.getItem('hugmyndir-cell') ? false : window.localStorage.getItem('hugmyndir-cell')
   state.message = ''
 
   emitter.on('DOMContentLoaded', function () {
     const gun = Gun('https://gundb.alheimsins.net/gun')
+
+    if (state.cell !== false) {
+      getLocation()
+    }
 
     emitter.on('message:update', message => {
       state.message = message
@@ -18,6 +22,7 @@ module.exports = (state, emitter) => {
 
     emitter.on('ideas:add', idea => {
       state.ideas.push(idea)
+      window.localStorage.setItem('hugmyndir-ideas', JSON.stringify(state.ideas))
       emitter.emit(state.events.RENDER)
       gun.get('hugmyndir').get(state.cell).set(idea)
     })
@@ -32,6 +37,7 @@ module.exports = (state, emitter) => {
       const ideas = Object.values(data).filter(idea => idea)
       if (ideas.toString() !== state.ideas.toString()) {
         state.ideas = ideas
+        window.localStorage.setItem('hugmyndir-ideas', JSON.stringify(ideas))
         emitter.emit(state.events.RENDER)
       }
     })
@@ -39,6 +45,7 @@ module.exports = (state, emitter) => {
     emitter.on('cell:update', cell => {
       if (state.cell !== cell) {
         state.cell = cell
+        window.localStorage.setItem('hugmyndir-cell', cell)
         emitter.emit('ideas:update', {})
         emitter.emit('ideas:listen', cell)
       }
@@ -73,7 +80,7 @@ module.exports = (state, emitter) => {
       }
     }
 
-    emitter.on('locate', () => {
+    emitter.on('cell:locate', () => {
       emitter.emit('message:update', '')
       getLocation()
     })

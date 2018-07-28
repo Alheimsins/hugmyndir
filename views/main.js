@@ -32,7 +32,7 @@ function view (state, emit) {
         <h1>Hugmyndir</h1>
         <p>To share your ideas you must enter the grid to connect your mind to the physical world</p>
         <div class="red">${state.message}</p>
-        <button class="bg-white shadow-3 pa3 mb3 mt3 w-50 pointer opacity:0" onclick=${handleLocate}>Enter</button>
+        <button class="bg-white shadow-3 pa3 mb3 mt3 w-50 pointer opacity:0" onclick=${enterGrid}>Enter</button>
       </main>
     </body>
   `
@@ -46,8 +46,9 @@ function view (state, emit) {
     ideaField.value = ''
   }
 
-  function handleLocate () {
-    emit('locate')
+  function enterGrid () {
+    state.enterGrid = true
+    emit('cell:locate')
     emit('message:update', 'Entering grid... please wait')
   }
 }

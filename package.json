@@ -52,7 +52,6 @@
   "license": "MIT",
   "dependencies": {
     "choo": "6.13.0",
-    "choo-persist": "3.0.2",
     "choo-service-worker": "2.4.0",
     "gun": "0.9.9997",
     "sheetify": "7.3.3",
