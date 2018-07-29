@@ -66,6 +66,8 @@ module.exports = (state, emitter) => {
       console.error(error)
       if (error.code === 1) {
         emitter.emit('message:update', 'You cannot enter the grid without sharing your location')
+      } else if (error.code === 2) {
+        emitter.emit('message:update', 'Location unavailable. Does your device support geolocation?')
       } else if (error.code === 3) {
         emitter.emit('message:update', 'Search for location timed out... sorry :-(')
       }
