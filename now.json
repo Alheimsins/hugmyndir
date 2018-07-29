@@ -50,6 +50,9 @@
                 }
             ]
         }
+    ],
+    "rewrites": [
+      { "source": "favicon.ico", "destination": "assets/favicon.ico" }
     ]
   }
 }
