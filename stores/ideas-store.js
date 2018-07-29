@@ -1,5 +1,4 @@
 const sloppyRound = require('../lib/sloppy-round')
-const DEFAULT_CELL = '49.465x08.987'
 const Gun = require('gun/gun')
 require('gun/lib/open.js')
 
@@ -68,7 +67,7 @@ module.exports = (state, emitter) => {
       if (error.code === 1) {
         emitter.emit('message:update', 'You cannot enter the grid without sharing your location')
       } else if (error.code === 3) {
-        emitter.emit('cell:update', DEFAULT_CELL)
+        emitter.emit('message:update', 'Search for location timed out... sorry :-(')
       }
     }
 
