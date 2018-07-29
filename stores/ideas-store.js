@@ -43,6 +43,7 @@ module.exports = (state, emitter) => {
     emitter.on('cell:update', cell => {
       if (state.cell !== cell) {
         state.cell = cell
+        emitter.emit(state.events.RENDER)
         emitter.emit('ideas:update', {})
         emitter.emit('ideas:listen', cell)
       }
