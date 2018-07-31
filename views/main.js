@@ -1,4 +1,5 @@
 const html = require('choo/html')
+const autofocus = require('dom-autofocus')
 const ideas = require('../templates/ideas')
 const grid = require('../templates/grid')
 
@@ -16,7 +17,7 @@ function view (state, emit) {
         <h1>Hugmyndir</h1>
         <form class="black" onsubmit=${handleSubmit}>
           <label for="idea" class="white">Share your idea...</label>
-          <textarea id="idea" name="idea" rows="3" class="w-100 h-3 f-subheadline bn tc" placeholder="Share your idea..." autofocus></textarea>
+          ${autofocus(html`<textarea id="idea" name="idea" rows="3" class="w-100 h-3 f-subheadline bn tc" placeholder="Share your idea..."></textarea>`)}
           <button type="submit" class="shadow-3 pa3 mb3 mt3 bg-white w-50 pointer">Share</button>
         </form>
         ${ideas(state.ideas)}
