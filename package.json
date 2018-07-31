@@ -54,7 +54,7 @@
     "choo": "6.13.0",
     "choo-persist": "3.0.2",
     "choo-service-worker": "2.4.0",
-    "gun": "0.9.9997",
+    "gun": "0.9.9998",
     "sheetify": "7.3.3",
     "tachyons": "4.11.1"
   },
