@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "ava": "0.25.0",
-    "bankai": "9.14.0",
+    "bankai": "9.15.0",
     "choo-devtools": "2.5.1",
     "choo-scaffold": "1.2.0",
     "content-security-policy-builder": "2.0.0",
