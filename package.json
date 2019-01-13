@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/Alheimsins/hugmyndir#readme",
   "engines": {
-    "node": ">=10.7.0"
+    "node": ">=10.15.0"
   },
   "scripts": {
     "build": "bankai build index.js",
