@@ -5,7 +5,7 @@ const persist = require('choo-persist')
 css('tachyons')
 
 const app = choo()
-app.use(persist({name: 'hugmyndir-persist'}))
+app.use(persist({ name: 'hugmyndir-persist' }))
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(require('choo-devtools')())
