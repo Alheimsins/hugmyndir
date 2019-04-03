@@ -51,7 +51,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "choo": "6.13.2",
+    "choo": "6.13.3",
     "choo-persist": "3.0.2",
     "choo-service-worker": "2.4.0",
     "dom-autofocus": "1.0.1",
