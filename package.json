@@ -60,7 +60,7 @@
     "tachyons": "4.11.1"
   },
   "devDependencies": {
-    "ava": "1.4.1",
+    "ava": "2.0.0",
     "bankai": "9.15.0",
     "choo-devtools": "2.5.1",
     "choo-scaffold": "1.2.0",
