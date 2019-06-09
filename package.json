@@ -53,7 +53,7 @@
   "dependencies": {
     "choo": "6.13.3",
     "choo-persist": "3.0.2",
-    "choo-service-worker": "2.4.0",
+    "choo-service-worker": "3.0.0",
     "dom-autofocus": "1.0.1",
     "gun": "0.2019.515",
     "sheetify": "7.4.0",
