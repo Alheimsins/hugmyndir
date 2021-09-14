@@ -55,7 +55,7 @@
     "choo-persist": "3.0.2",
     "choo-service-worker": "3.0.0",
     "dom-autofocus": "2.0.0",
-    "gun": "0.2020.1234",
+    "gun": "0.2020.1235",
     "sheetify": "8.0.0",
     "tachyons": "4.12.0"
   },
